@@ -9,9 +9,22 @@
 /**
  * 
  */
+class USpringArmComponent;
+class UCameraComponent;
+
 UCLASS()
 class AURA_API AAuraCharacter : public AAuraCharacterBase
 {
 	GENERATED_BODY()
+
+public:
+	AAuraCharacter();
+
+private:
+	UPROPERTY(EditDefaultsOnly)
+	USpringArmComponent* SpringArm;
+
+	UPROPERTY(EditDefaultsOnly)
+	UCameraComponent* AuraCamera;
 	
 };
