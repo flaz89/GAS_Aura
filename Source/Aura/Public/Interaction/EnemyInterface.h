@@ -22,6 +22,6 @@ class AURA_API IEnemyInterface
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	virtual void Hilightactor() = 0; // "= 0" it means it's a pure function and considered abstract function, and each class implement this interface have to override it
-	virtual void UnlightActor() = 0;
+	virtual void HighlightActor() = 0; // "= 0" it means it's a pure function and considered abstract function, and each class implement this interface have to override it
+	virtual void UnHighlightActor() = 0;
 };
