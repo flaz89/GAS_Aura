@@ -3,9 +3,11 @@
 
 #include "Character/AuraCharacter.h"
 
+#include "AbilitySystemComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Player/AuraPlayerState.h"
 
 
 AAuraCharacter::AAuraCharacter()
@@ -27,3 +29,32 @@ AAuraCharacter::AAuraCharacter()
 
 
 }
+
+// Set Ability actor info with PlayerState and this actor, and set ASC and AS pointer with those on Player State
+void AAuraCharacter::InitAbilityActorInfo()
+{
+	if (AAuraPlayerState* AuraPlayerState = GetPlayerState<AAuraPlayerState>())
+	{
+		AuraPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(AuraPlayerState, this);
+		AbilitySystemComponent = AuraPlayerState->GetAbilitySystemComponent();
+		AttributeSet = AuraPlayerState->GetAttributeSet();
+	}
+}
+
+// Init AbilityActorInfo for Server
+void AAuraCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	
+	InitAbilityActorInfo();
+}
+
+// Init AbilityActorInfo for Client
+void AAuraCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+	
+	InitAbilityActorInfo();
+}
+
+

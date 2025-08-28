@@ -4,7 +4,7 @@ using UnrealBuildTool;
 
 public class Aura : ModuleRules
 {
-	public Aura(ReadOnlyTargetRules target) : base(target)
+	public Aura(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
