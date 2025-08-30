@@ -30,7 +30,7 @@ AAuraCharacter::AAuraCharacter()
 
 }
 
-// Set Ability actor info with PlayerState and this actor, and set ASC and AS pointer with those on Player State
+// Set Ability actor info with PlayerState and "this" actor, and set ASC and AS pointer with those on Player State
 void AAuraCharacter::InitAbilityActorInfo()
 {
 	if (AAuraPlayerState* AuraPlayerState = GetPlayerState<AAuraPlayerState>())
